@@ -667,7 +667,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="hw3d.rc">
+    <ResourceCompile Include="Port Animation.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>

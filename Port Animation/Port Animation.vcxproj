@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{63E56790-0977-47CC-B52B-B1BF8746AFD4}</ProjectGuid>
-    <RootNamespace>hw3d</RootNamespace>
+    <RootNamespace>Port Animation</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
     <ProjectName>Port Animation</ProjectName>
   </PropertyGroup>
@@ -416,7 +416,7 @@
     <ClInclude Include="WireframePass.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="hw3d.rc" />
+    <ResourceCompile Include="Port Animation.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="chili.ico" />
