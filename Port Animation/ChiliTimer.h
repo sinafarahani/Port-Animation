@@ -8,5 +8,5 @@ public:
 	float Mark() noexcept;
 	float Peek() const noexcept;
 private:
-	std::chrono::steady_clock::time_point last;
+	std::chrono::high_resolution_clock::time_point last;
 };
