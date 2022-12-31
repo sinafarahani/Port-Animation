@@ -103,7 +103,9 @@
     <ClCompile Include="BufferClearPass.cpp" />
     <ClCompile Include="C:\Users\MSI GF 66 katana11ue\source\repos\imgui\imgui_tables.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Car.cpp" />
     <ClCompile Include="cnpy.cpp" />
+    <ClCompile Include="Crane.cpp" />
     <ClCompile Include="CubeTexture.cpp" />
     <ClCompile Include="ShadowCameraCBuf.cpp" />
     <ClCompile Include="CameraContainer.cpp" />
@@ -122,6 +124,7 @@
     <ClCompile Include="Projection.cpp" />
     <ClCompile Include="ShadowRasterizer.cpp" />
     <ClCompile Include="ShadowSampler.cpp" />
+    <ClCompile Include="Ship.cpp" />
     <ClCompile Include="Sink.cpp" />
     <ClCompile Include="RenderGraph.cpp" />
     <ClCompile Include="FullscreenPass.cpp" />
@@ -310,7 +313,9 @@
     <ClInclude Include="BufferClearPass.h" />
     <ClInclude Include="BufferResource.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Car.h" />
     <ClInclude Include="cnpy.h" />
+    <ClInclude Include="Crane.h" />
     <ClInclude Include="CubeTexture.h" />
     <ClInclude Include="ShadowCameraCBuf.h" />
     <ClInclude Include="CameraContainer.h" />
@@ -352,6 +357,7 @@
     <ClInclude Include="ShadowMappingPass.h" />
     <ClInclude Include="ShadowRasterizer.h" />
     <ClInclude Include="ShadowSampler.h" />
+    <ClInclude Include="Ship.h" />
     <ClInclude Include="SkyboxPass.h" />
     <ClInclude Include="SkyboxTransformCbuf.h" />
     <ClInclude Include="Source.h" />
