@@ -55,9 +55,6 @@ void App::HandleInput( float dt )
 				wnd.mouse.DisableRaw();
 			}
 			break;
-		case VK_F1:
-			showDemoWindow = true;
-			break;
 		case VK_RETURN:
 			savingDepth = true;
 			break;
@@ -112,40 +109,35 @@ void App::DoFrame( float dt )
 	sponza.Submit( Chan::main );
 	cameras.Submit( Chan::main );
 
-	sponza.Submit( Chan::shadow );
+	//sponza.Submit( Chan::shadow );
 	//cube.Submit( Chan::shadow );
-	sponza.Submit( Chan::shadow );
+	//sponza.Submit( Chan::shadow );
 
 	rg.Execute( wnd.Gfx() );
-
-	if( savingDepth )
-	{
-		rg.DumpShadowMap( wnd.Gfx(),"shadow.png" );
-		savingDepth = false;
-	}
 	
 	// imgui windows
-	//static MP sponzeProbe{ "Sponza" };
-	//sponzeProbe.SpawnWindow( sponza );
+	static MP sponzeProbe{ "Sponza" };
+	sponzeProbe.SpawnWindow( sponza );
+	auto& tf = sponzeProbe.get_tf(sponza);
+	if (tf.x < 50) {
+		tf.x++;
+	}
 	//cameras.SpawnWindow( wnd.Gfx() );
 	//light.SpawnControlWindow();
-	//ShowImguiDemoWindow();
 	//cube.SpawnControlWindow( wnd.Gfx(),"Cube 1" );
+
+	crane.show_panel();
+	vehicle.show_panel();
+	ship.show_panel();
+
 	
-	//rg.RenderWindows( wnd.Gfx() );
+	rg.RenderWindows( wnd.Gfx() );
 
 	// present
 	wnd.Gfx().EndFrame();
 	rg.Reset();
 }
 
-//void App::ShowImguiDemoWindow()
-//{
-//	if( showDemoWindow )
-//	{
-//		ImGui::ShowDemoWindow( &showDemoWindow );
-//	}
-//}
 
 App::~App()
 {}

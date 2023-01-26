@@ -9,6 +9,9 @@
 #include "ScriptCommander.h"
 #include "BlurOutlineRenderGraph.h"
 #include "ChiliMath.h"
+#include "AGV.h"
+#include "Crane.h"
+#include "Ship.h"
 
 class App
 {
@@ -20,10 +23,8 @@ public:
 private:
 	void DoFrame( float dt );
 	void HandleInput( float dt );
-	//void ShowImguiDemoWindow();
 private:
 	std::string commandLine;
-	bool showDemoWindow = false;
 	ImguiManager imgui;
 	Window wnd;
 	ScriptCommander scriptCommander;
@@ -32,6 +33,9 @@ private:
 	float speed_factor = 1.0f;
 	CameraContainer cameras;
 	PointLight light;
+	AGV vehicle;
+	Ship ship;
+	Crane crane;
 	//TestCube cube{ wnd.Gfx(),4.0f };
 	Model sponza{ wnd.Gfx(),"Models\\sponza\\sponza.obj",1.0f / 20.0f };
 	bool savingDepth = false;

@@ -79,6 +79,19 @@ public:
 
 class MP : ModelProbe
 {
+private:
+	Node* pSelectedNode = nullptr;
+	struct TransformParameters
+	{
+		float xRot = 0.0f;
+		float yRot = 0.0f;
+		float zRot = 0.0f;
+		float x = 0.0f;
+		float y = 0.0f;
+		float z = 0.0f;
+	};
+	std::string name;
+	std::unordered_map<int, TransformParameters> transformParams;
 public:
 	MP( std::string name ) : name( std::move( name ) )
 	{}
@@ -112,10 +125,21 @@ public:
 				);
 			}
 
-			TP probe;
-			pSelectedNode->Accept( probe );
+			/*TP probe;
+			pSelectedNode->Accept( probe );*/
 		}
 		ImGui::End();
+	}
+	TransformParameters& get_tf(Model& model) {
+		pSelectedNode = model.Accept2(*this);
+		auto& tf = ResolveTransform();
+		pSelectedNode->SetAppliedTransform(
+			dx::XMMatrixRotationX(tf.xRot) *
+			dx::XMMatrixRotationY(tf.yRot) *
+			dx::XMMatrixRotationZ(tf.zRot) *
+			dx::XMMatrixTranslation(tf.x, tf.y, tf.z)
+		);
+		return tf;
 	}
 protected:
 	bool PushNode( Node& node ) override
@@ -143,19 +167,7 @@ protected:
 	{
 		ImGui::TreePop();
 	}
-private:
-	Node* pSelectedNode = nullptr;
-	struct TransformParameters
-	{
-		float xRot = 0.0f;
-		float yRot = 0.0f;
-		float zRot = 0.0f;
-		float x = 0.0f;
-		float y = 0.0f;
-		float z = 0.0f;
-	};
-	std::string name;
-	std::unordered_map<int,TransformParameters> transformParams;
+
 private:
 	TransformParameters& ResolveTransform() noexcept
 	{

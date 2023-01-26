@@ -1,11 +1,14 @@
 #include "Ship.h"
 
-int Ship::getCapacity()
+void Ship::show_panel()
 {
-	return capacity;
+	ImGui::Begin("Ship");
+	ImGui::SliderFloat("ArrivalTime", &arrivalTime, 0.1f, 60.f);
+	ImGui::SliderInt("Capacity", &capacity, 1, 300);
+	ImGui::End();
 }
 
-std::string Ship::getArrivalTime()
+void Ship::move()
 {
-	return arrivalTime;
+	pos.x += speed;
 }

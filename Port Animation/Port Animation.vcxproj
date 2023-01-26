@@ -103,7 +103,7 @@
     <ClCompile Include="BufferClearPass.cpp" />
     <ClCompile Include="C:\Users\MSI GF 66 katana11ue\source\repos\imgui\imgui_tables.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Car.cpp" />
+    <ClCompile Include="AGV.cpp" />
     <ClCompile Include="cnpy.cpp" />
     <ClCompile Include="Crane.cpp" />
     <ClCompile Include="CubeTexture.cpp" />
@@ -313,7 +313,7 @@
     <ClInclude Include="BufferClearPass.h" />
     <ClInclude Include="BufferResource.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Car.h" />
+    <ClInclude Include="AGV.h" />
     <ClInclude Include="cnpy.h" />
     <ClInclude Include="Crane.h" />
     <ClInclude Include="CubeTexture.h" />

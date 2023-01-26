@@ -318,7 +318,7 @@
     <ClCompile Include="C:\Users\MSI GF 66 katana11ue\source\repos\imgui\imgui_tables.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="Car.cpp">
+    <ClCompile Include="AGV.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Crane.cpp">
@@ -674,7 +674,7 @@
     <ClInclude Include="cnpy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Car.h">
+    <ClInclude Include="AGV.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Crane.h">

@@ -58,6 +58,11 @@ void Model::Accept( ModelProbe & probe )
 {
 	pRoot->Accept( probe );
 }
+Node* Model::Accept2(ModelProbe& probe)
+{
+	pRoot->Accept(probe);
+	return pRoot.get();
+}
 
 void Model::LinkTechniques( Rgph::RenderGraph& rg )
 {
