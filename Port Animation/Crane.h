@@ -4,6 +4,7 @@
 #include "Model.h"
 #include "TestModelProbe.h"
 #include "Drawable.h"
+#include "Timer.h"
 
 class Crane{
 public:
@@ -15,4 +16,6 @@ private:
 	float roll = 0.0f;
 	float pitch = 0.0f;
 	float yaw = 0.0f;
+	MP CraneProbe{ "Crane" };
+	Timer t;
 };

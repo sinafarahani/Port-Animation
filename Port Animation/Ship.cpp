@@ -10,5 +10,42 @@ void Ship::show_panel()
 
 void Ship::move()
 {
-	pos.x += speed;
+	if (!loading && !waiting) {
+		pos.x += speed;
+		if (pos.x > outbound) {
+			waiting = true;
+			t.Mark();
+		}
+	}
+	else if (!waiting) {
+		check_load();
+	}
+	else {
+		if (t.Peek() > arrivalTime) {
+			waiting = false;
+			reset_position();
+		}
+	}
+	if (pos.x >= crane.x) {
+		loading = true;
+	}
+	
+}
+
+void Ship::render()
+{
+	move();
+	if (!waiting) {
+
+	}
+}
+
+void Ship::check_load()
+{
+
+}
+
+void Ship::reset_position()
+{
+	pos = { 1.0f,1.0f,1.0f };
 }

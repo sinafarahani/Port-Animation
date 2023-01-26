@@ -111,7 +111,7 @@
     <ClCompile Include="CameraContainer.cpp" />
     <ClCompile Include="CameraIndicator.cpp" />
     <ClCompile Include="ChiliException.cpp" />
-    <ClCompile Include="ChiliTimer.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="ChiliUtil.cpp" />
     <ClCompile Include="ChiliXM.cpp" />
     <ClCompile Include="DepthStencil.cpp" />
@@ -323,7 +323,7 @@
     <ClInclude Include="Channels.h" />
     <ClInclude Include="ChiliException.h" />
     <ClInclude Include="ChiliMath.h" />
-    <ClInclude Include="ChiliTimer.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="ChiliUtil.h" />
     <ClInclude Include="ChiliWin.h" />
     <ClInclude Include="ChiliWRL.h" />

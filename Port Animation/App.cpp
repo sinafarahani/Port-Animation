@@ -115,7 +115,6 @@ void App::DoFrame( float dt )
 	rg.Execute( wnd.Gfx() );
 	
 	// imgui windows
-	static MP sponzeProbe{ "Sponza" };
 	sponzeProbe.SpawnWindow( sponza );
 	bool test = false;
 	auto& tf = sponzeProbe.get_tf_child(sponza, 0);
