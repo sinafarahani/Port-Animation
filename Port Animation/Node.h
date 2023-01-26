@@ -19,8 +19,9 @@ public:
 	{
 		return childPtrs.size() > 0;
 	}
-	void Accept( ModelProbe& probe );
-	void Accept( TechniqueProbe& probe );
+	void Accept( ModelProbe& probe);
+	void Accept2(ModelProbe& probe);
+	void Accept( TechniqueProbe& probe);
 	Node* GetChildPtr(int id);
 	const std::string& GetName() const
 	{

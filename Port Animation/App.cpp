@@ -5,7 +5,6 @@
 #include "ChiliUtil.h"
 #include "Testing.h"
 #include "PerfLog.h"
-#include "TestModelProbe.h"
 #include "Testing.h"
 #include "Camera.h"
 #include "Channels.h"
@@ -143,7 +142,7 @@ void App::DoFrame( float dt )
 	ship.show_panel();
 
 	
-	rg.RenderWindows( wnd.Gfx() );
+	//rg.RenderWindows( wnd.Gfx() );
 
 	// present
 	wnd.Gfx().EndFrame();

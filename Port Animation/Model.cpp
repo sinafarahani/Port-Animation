@@ -60,7 +60,7 @@ void Model::Accept( ModelProbe & probe )
 }
 Node* Model::Accept2(ModelProbe& probe)
 {
-	pRoot->Accept(probe);
+	pRoot->Accept2(probe);
 	return pRoot.get();
 }
 

@@ -5,7 +5,6 @@
 #include "CameraContainer.h"
 #include "PointLight.h"
 #include "TestCube.h"
-#include "Model.h"
 #include "ScriptCommander.h"
 #include "BlurOutlineRenderGraph.h"
 #include "ChiliMath.h"

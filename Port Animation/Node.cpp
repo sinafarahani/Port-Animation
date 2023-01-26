@@ -63,6 +63,13 @@ void Node::Accept( ModelProbe& probe )
 		probe.PopNode( *this );
 	}
 }
+void Node::Accept2(ModelProbe& probe)
+{
+	for (auto& cp : childPtrs)
+	{
+		cp->Accept2(probe);
+	}
+}
 
 void Node::Accept( TechniqueProbe& probe )
 {

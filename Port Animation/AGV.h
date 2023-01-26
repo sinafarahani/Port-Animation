@@ -1,6 +1,8 @@
 #pragma once
 
 #include "imgui/imgui.h"
+#include "Model.h"
+#include "TestModelProbe.h"
 #include "Drawable.h"
 
 class AGV{
