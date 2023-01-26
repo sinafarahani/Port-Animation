@@ -21,6 +21,7 @@ public:
 	}
 	void Accept( ModelProbe& probe );
 	void Accept( TechniqueProbe& probe );
+	Node* GetChildPtr(int id);
 	const std::string& GetName() const
 	{
 		return name;

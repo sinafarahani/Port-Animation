@@ -130,8 +130,19 @@ public:
 		}
 		ImGui::End();
 	}
-	TransformParameters& get_tf(Model& model) {
+	TransformParameters& get_tf_root(Model& model) {
 		pSelectedNode = model.Accept2(*this);
+		auto& tf = ResolveTransform();
+		pSelectedNode->SetAppliedTransform(
+			dx::XMMatrixRotationX(tf.xRot) *
+			dx::XMMatrixRotationY(tf.yRot) *
+			dx::XMMatrixRotationZ(tf.zRot) *
+			dx::XMMatrixTranslation(tf.x, tf.y, tf.z)
+		);
+		return tf;
+	}
+	TransformParameters& get_tf_child(Model& model, int id) {
+		pSelectedNode = model.Accept2(*this)->GetChildPtr(id);
 		auto& tf = ResolveTransform();
 		pSelectedNode->SetAppliedTransform(
 			dx::XMMatrixRotationX(tf.xRot) *

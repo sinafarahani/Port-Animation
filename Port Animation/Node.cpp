@@ -71,3 +71,8 @@ void Node::Accept( TechniqueProbe& probe )
 		mp->Accept( probe );
 	}
 }
+
+Node* Node::GetChildPtr(int id)
+{
+	return childPtrs[id].get();
+}

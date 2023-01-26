@@ -118,10 +118,22 @@ void App::DoFrame( float dt )
 	// imgui windows
 	static MP sponzeProbe{ "Sponza" };
 	sponzeProbe.SpawnWindow( sponza );
-	auto& tf = sponzeProbe.get_tf(sponza);
-	if (tf.x < 50) {
-		tf.x++;
+	bool test = false;
+	auto& tf = sponzeProbe.get_tf_child(sponza, 0);
+	if (!test) {
+		if (tf.x < 50) {
+			tf.x++;
+		}
 	}
+	if (tf.x >= 50)
+		test = true;
+	if(test) {
+		auto& tf2 = sponzeProbe.get_tf_root(sponza);
+		if (tf2.x < 50) {
+			tf2.x++;
+		}
+	}
+	auto& tf3 = sponzeProbe.get_tf_child(sponza, 5);
 	//cameras.SpawnWindow( wnd.Gfx() );
 	//light.SpawnControlWindow();
 	//cube.SpawnControlWindow( wnd.Gfx(),"Cube 1" );
