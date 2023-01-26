@@ -132,14 +132,32 @@ void App::DoFrame( float dt )
 		}
 	}
 	auto& tf3 = sponzeProbe.get_tf_child(sponza, 5);
+	
 	//cameras.SpawnWindow( wnd.Gfx() );
 	//light.SpawnControlWindow();
 	//cube.SpawnControlWindow( wnd.Gfx(),"Cube 1" );
-
-	crane.show_panel();
-	vehicle.show_panel();
-	ship.show_panel();
-
+	
+	if (ImGui::Begin("Animation"))
+	{
+		if (!Start) {
+			if (ImGui::Button("Start"))
+			{
+				Start = true;
+			}
+		}
+		else {
+			if (ImGui::Button("Stop"))
+			{
+				Start = false;
+			}
+		}
+	}
+	ImGui::End();
+	if (!Start) {
+		crane.show_panel();
+		vehicle.show_panel();
+		ship.show_panel();
+	}
 	
 	//rg.RenderWindows( wnd.Gfx() );
 

@@ -38,5 +38,6 @@ private:
 	//TestCube cube{ wnd.Gfx(),4.0f };
 	Model sponza{ wnd.Gfx(),"Models\\sponza\\sponza.obj",1.0f / 20.0f };
 	bool savingDepth = false;
+	bool Start = false;
 	MP sponzeProbe{ "Sponza" };
 };
