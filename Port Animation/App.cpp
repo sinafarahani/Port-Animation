@@ -18,7 +18,7 @@ App::App(const std::string& commandLine)
 	scriptCommander(TokenizeQuoted(commandLine)),
 	light(wnd.Gfx(), { 10.0f,5.0f,0.0f }),
 	ship(wnd, rg),
-	crane(wnd, rg),
+	crane(wnd, rg, ship.n_c, vehicle.n_c, ship.loading, vehicle.loading),
 	vehicle(wnd, rg)
 {
 	cameras.AddCamera( std::make_unique<Camera>( wnd.Gfx(),"A",dx::XMFLOAT3{ -13.5f,6.0f,3.5f },0.0f,PI / 2.0f ) );
@@ -119,23 +119,6 @@ void App::DoFrame( float dt )
 	
 	
 	// imgui windows
-	sponzeProbe.SpawnWindow( sponza );
-	bool test = false;
-	auto& tf = sponzeProbe.get_tf_child(sponza, 0);
-	if (!test) {
-		if (tf.x < 50) {
-			tf.x++;
-		}
-	}
-	if (tf.x >= 50)
-		test = true;
-	if(test) {
-		auto& tf2 = sponzeProbe.get_tf_root(sponza);
-		if (tf2.x < 50) {
-			tf2.x++;
-		}
-	}
-	auto& tf3 = sponzeProbe.get_tf_child(sponza, 5);
 	
 	//cameras.SpawnWindow( wnd.Gfx() );
 	//light.SpawnControlWindow();

@@ -4,25 +4,29 @@
 #include "Model.h"
 #include "TestModelProbe.h"
 #include "Drawable.h"
-#include "Timer.h"
 #include "Window.h"
 #include "BlurOutlineRenderGraph.h"
 #include "ChiliMath.h"
 
 class Crane{
 public:
-	Crane(Window& wnd, Rgph::BlurOutlineRenderGraph& rg);
+	Crane(Window& wnd, Rgph::BlurOutlineRenderGraph& rg, int& ship_n_c, int& AGV_n_c, bool& ship_load, bool& AGV_load);
 
 	void show_panel();
+	void show_stats();
 	void render();
 	void move();
 private:
 	void rotate();
 	void contain();
 
-	float time = 10.f;
+	float time = 20.f;
 	MP CraneProbe{ "Crane" };
-	Timer t;
+
+	int& ship_n_c;
+	int& AGV_n_c;
+	bool& ship_load;
+	bool& AGV_load;
 
 	float yrot = PI;
 	float x = -16.4f;
@@ -34,6 +38,9 @@ private:
 	float rot_speed = (PI / (time / 6)) / 144;
 	bool rotated = false;
 	bool contained = false;
+	bool first = true;
+	int containers_handled = 0;
+	long int counter = 0;
 
 	Window& wnd;
 	Rgph::BlurOutlineRenderGraph& rg;

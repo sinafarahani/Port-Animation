@@ -20,12 +20,14 @@ public:
     void move();
     void render();
 
+    int n_c;
+    bool loading = false;
+
 private:
     void check_load();
     void reset(auto& tf);
     void create_containers();
     int capacity = 1;
-    int user_capacity;
     float arrivalTime = 10.f;
     float speed = 0.05f;
     DirectX::XMFLOAT3 pos = { 1.0f,1.0f,1.0f };
@@ -37,7 +39,6 @@ private:
 
     const float outbound = 150.f;
 
-    bool loading = false;
     bool waiting = false;
     bool container_created = false;
     MP ShipProbe{ "Ship" };

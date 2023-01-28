@@ -6,7 +6,7 @@ Ship::Ship(Window& wnd, Rgph::BlurOutlineRenderGraph& rg)
 	rg(rg)
 {
 	ship.SetRootTransform(dx::XMMatrixRotationY(PI / 2.f) *
-		dx::XMMatrixTranslation(20.f, 0.f, -100.f));
+		dx::XMMatrixTranslation(-20.f, 0.f, -100.f));
 	ship.LinkTechniques(rg);
 }
 
@@ -16,7 +16,7 @@ void Ship::show_panel()
 	ImGui::SliderFloat("ArrivalTime", &arrivalTime, 0.1f, 60.f);
 	ImGui::SliderInt("Capacity", &capacity, 1, 100);
 	ImGui::End();
-	user_capacity = capacity;
+	n_c = capacity;
 }
 
 void Ship::move()
@@ -24,8 +24,9 @@ void Ship::move()
 	auto& tf = ShipProbe.get_tf_root(ship);
 	if (!loading && !waiting) {
 		tf.z += speed;
-		if (tf.z == crane.z) {
+		if ((tf.z - speed) < crane.z && (tf.z + speed) > crane.z) {
 			loading = true;
+			tf.z += 2 * speed;
 		}
 		if (tf.z > outbound) {
 			waiting = true;
@@ -59,7 +60,7 @@ void Ship::render()
 
 void Ship::check_load()
 {
-	if (user_capacity > 1) {
+	if (n_c <= 0) {
 		loading = false;
 	}
 }
@@ -67,7 +68,7 @@ void Ship::check_load()
 void Ship::reset(auto& tf)
 {
 	tf.z = -100;
-	user_capacity = capacity;
+	n_c = capacity;
 }
 
 void Ship::create_containers()

@@ -54,6 +54,7 @@ void AGV::move()
 			tf.y -= speed;
 		}
 		else {
+			loading = true;
 			check_load();
 		}
 	}
@@ -61,11 +62,15 @@ void AGV::move()
 		if (t.Peek() > time) {
 			waiting = false;
 			full = false;
+			n_c = 0;
 		}
 	}
 }
 
 void AGV::check_load()
 {
-	full = true;
+	if (n_c >= capacity) {
+		full = true;
+		loading = false;
+	}
 }

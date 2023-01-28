@@ -15,23 +15,25 @@ public:
     
     void show_panel();
     void move();
+    
+    int n_c = 0;
+    bool loading = false;
 
 private:
     void check_load();
 
     int capacity = 2;
-    float time = 20.f;
+    
+    float time = 10.f;
     float speed = 0.05f;
     DirectX::XMFLOAT3 pos = { 1.0f,1.0f,1.0f };
     DirectX::XMFLOAT3 storage = { 100.0f,1.0f,100.0f };
     DirectX::XMFLOAT3 crane = { -0.0f,1.0f,5.0f };
-    float roll = 0.0f;
-    float pitch = 0.0f;
-    float yaw = 0.0f;
-    bool full = false;
-    bool waiting = false;
     MP AGVProbe{ "AGV" };
     Timer t;
+
+    bool full = false;
+    bool waiting = false;
 
     Window& wnd;
     Rgph::BlurOutlineRenderGraph& rg;
