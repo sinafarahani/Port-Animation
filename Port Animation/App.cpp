@@ -11,12 +11,15 @@
 
 namespace dx = DirectX;
 
-App::App( const std::string& commandLine )
+App::App(const std::string& commandLine)
 	:
-	commandLine( commandLine ),
-	wnd( 1280,720,"Test App" ),
-	scriptCommander( TokenizeQuoted( commandLine ) ),
-	light( wnd.Gfx(),{ 10.0f,5.0f,0.0f } )
+	commandLine(commandLine),
+	wnd(1280, 720, "Test App"),
+	scriptCommander(TokenizeQuoted(commandLine)),
+	light(wnd.Gfx(), { 10.0f,5.0f,0.0f }),
+	ship(wnd, rg),
+	crane(wnd, rg),
+	vehicle(wnd, rg)
 {
 	cameras.AddCamera( std::make_unique<Camera>( wnd.Gfx(),"A",dx::XMFLOAT3{ -13.5f,6.0f,3.5f },0.0f,PI / 2.0f ) );
 	//cameras.AddCamera( light.ShareCamera() );
@@ -105,14 +108,15 @@ void App::DoFrame( float dt )
 		
 	//light.Submit( Chan::main );
 	//cube.Submit( Chan::main );
-	sponza.Submit( Chan::main );
+	//sponza.Submit( Chan::main );
 	cameras.Submit( Chan::main );
 
+	
 	//sponza.Submit( Chan::shadow );
 	//cube.Submit( Chan::shadow );
 	//sponza.Submit( Chan::shadow );
 
-	rg.Execute( wnd.Gfx() );
+	
 	
 	// imgui windows
 	sponzeProbe.SpawnWindow( sponza );
@@ -158,10 +162,16 @@ void App::DoFrame( float dt )
 		vehicle.show_panel();
 		ship.show_panel();
 	}
+	else {
+		ship.render();
+		crane.render();
+		vehicle.move();
+	}
 	
 	//rg.RenderWindows( wnd.Gfx() );
 
 	// present
+	rg.Execute(wnd.Gfx());
 	wnd.Gfx().EndFrame();
 	rg.Reset();
 }

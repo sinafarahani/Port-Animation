@@ -105,6 +105,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="AGV.cpp" />
     <ClCompile Include="cnpy.cpp" />
+    <ClCompile Include="Container.cpp" />
     <ClCompile Include="Crane.cpp" />
     <ClCompile Include="CubeTexture.cpp" />
     <ClCompile Include="ShadowCameraCBuf.cpp" />
@@ -315,6 +316,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="AGV.h" />
     <ClInclude Include="cnpy.h" />
+    <ClInclude Include="Container.h" />
     <ClInclude Include="Crane.h" />
     <ClInclude Include="CubeTexture.h" />
     <ClInclude Include="ShadowCameraCBuf.h" />

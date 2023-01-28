@@ -327,6 +327,9 @@
     <ClCompile Include="Ship.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Container.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WindowsMessageMap.h">
@@ -681,6 +684,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Ship.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Container.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

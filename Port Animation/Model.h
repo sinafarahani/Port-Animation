@@ -32,5 +32,5 @@ private:
 private:
 	std::shared_ptr<Node> pRoot;
 	// sharing meshes here perhaps dangerous?
-	std::vector<std::unique_ptr<Mesh>> meshPtrs;
+	std::vector<std::shared_ptr<Mesh>> meshPtrs;
 };

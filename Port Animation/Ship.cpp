@@ -1,18 +1,33 @@
 #include "Ship.h"
 
+Ship::Ship(Window& wnd, Rgph::BlurOutlineRenderGraph& rg)
+	:
+	wnd(wnd),
+	rg(rg)
+{
+	ship.SetRootTransform(dx::XMMatrixRotationY(PI / 2.f) *
+		dx::XMMatrixTranslation(20.f, 0.f, -100.f));
+	ship.LinkTechniques(rg);
+}
+
 void Ship::show_panel()
 {
 	ImGui::Begin("Ship");
 	ImGui::SliderFloat("ArrivalTime", &arrivalTime, 0.1f, 60.f);
-	ImGui::SliderInt("Capacity", &capacity, 1, 300);
+	ImGui::SliderInt("Capacity", &capacity, 1, 100);
 	ImGui::End();
+	user_capacity = capacity;
 }
 
 void Ship::move()
 {
+	auto& tf = ShipProbe.get_tf_root(ship);
 	if (!loading && !waiting) {
-		pos.x += speed;
-		if (pos.x > outbound) {
+		tf.z += speed;
+		if (tf.z == crane.z) {
+			loading = true;
+		}
+		if (tf.z > outbound) {
 			waiting = true;
 			t.Mark();
 		}
@@ -23,29 +38,45 @@ void Ship::move()
 	else {
 		if (t.Peek() > arrivalTime) {
 			waiting = false;
-			reset_position();
+			reset(tf);
 		}
 	}
-	if (pos.x >= crane.x) {
-		loading = true;
-	}
-	
 }
 
 void Ship::render()
 {
+	if (!container_created) {
+		create_containers();
+	}
 	move();
 	if (!waiting) {
-
+		for (auto& c : container) {
+			c.render();
+		}
+		ship.Submit(0b1);
 	}
 }
 
 void Ship::check_load()
 {
-
+	if (user_capacity > 1) {
+		loading = false;
+	}
 }
 
-void Ship::reset_position()
+void Ship::reset(auto& tf)
 {
-	pos = { 1.0f,1.0f,1.0f };
+	tf.z = -100;
+	user_capacity = capacity;
+}
+
+void Ship::create_containers()
+{
+	for (int i = 0; i < capacity; i++) {
+		Container c{ wnd, rg, pos, rot };
+		container.push_back(c);
+		c.render();
+		pos.y += 1.5f;
+	}
+	container_created = true;
 }

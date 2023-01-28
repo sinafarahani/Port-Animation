@@ -12,6 +12,8 @@ class Mesh : public Drawable
 {
 public:
 	Mesh( Graphics& gfx,const Material& mat,const aiMesh& mesh,float scale = 1.0f ) noxnd;
+	Mesh(const Mesh&) = default;
+	Mesh& operator=(const Mesh&) = default;
 	DirectX::XMMATRIX GetTransformXM() const noexcept override;
 	void Submit( size_t channels,DirectX::FXMMATRIX accumulatedTranform ) const noxnd;
 private:

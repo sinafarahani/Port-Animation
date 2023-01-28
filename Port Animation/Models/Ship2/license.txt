@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cargo Ship 06 without containers
+* source:	https://sketchfab.com/3d-models/cargo-ship-06-without-containers-c73ae6cc314941069a0e3a7ca6acc26d
+* author:	gogiart (https://sketchfab.com/agt14032013)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cargo Ship 06 without containers" (https://sketchfab.com/3d-models/cargo-ship-06-without-containers-c73ae6cc314941069a0e3a7ca6acc26d) by gogiart (https://sketchfab.com/agt14032013) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
