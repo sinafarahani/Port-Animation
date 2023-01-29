@@ -20,14 +20,16 @@ public:
     void move();
     void render();
 
+    int capacity = 1;
     int n_c;
     bool loading = false;
+
+    std::vector<Container> container;
 
 private:
     void check_load();
     void reset(auto& tf);
     void create_containers();
-    int capacity = 1;
     float arrivalTime = 10.f;
     float speed = 0.05f;
     DirectX::XMFLOAT3 pos = { 1.0f,1.0f,1.0f };
@@ -48,5 +50,4 @@ private:
     Rgph::BlurOutlineRenderGraph& rg;
 
     Model ship{ wnd.Gfx(),"Models\\Ship\\Cargo Ship 06a.obj",6.0f };
-    std::vector<Container> container;
 };

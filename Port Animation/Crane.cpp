@@ -1,13 +1,14 @@
 #include "Crane.h"
 
-Crane::Crane(Window& wnd, Rgph::BlurOutlineRenderGraph& rg, int& ship_n_c, int& AGV_n_c, bool& ship_load, bool& AGV_load)
+Crane::Crane(Window& wnd, Rgph::BlurOutlineRenderGraph& rg, int& ship_n_c, int& AGV_n_c, bool& ship_load, bool& AGV_load, std::vector<Container>& v)
 	:
 	wnd(wnd),
 	rg(rg),
 	ship_n_c(ship_n_c),
 	AGV_n_c(AGV_n_c),
 	ship_load(ship_load),
-	AGV_load(AGV_load)
+	AGV_load(AGV_load),
+	v(v)
 {
 	crane.LinkTechniques(rg);
 }
@@ -50,6 +51,9 @@ void Crane::render()
 		tf.yRot = yrot;
 		tf.x = x;
 		tf.z = z;
+	}
+	if (handling) {
+		v[ship_n_c].takeControl(x, (y + yOffset), (zOffset), 0, yrot, 0);
 	}
 	crane.Submit(0b1);
 	if (!AGV_load || !ship_load) {
@@ -112,6 +116,9 @@ void Crane::rotate()
 		}
 		if (yrot > 0) {
 			yrot -= rot_speed;
+			if (zOffset < 1.2) {
+				zOffset += 0.005f;
+			}
 		}
 		else {
 			yrot = 0;
@@ -132,6 +139,9 @@ void Crane::rotate()
 		}
 		if (yrot < PI) {
 			yrot += rot_speed;
+			if (zOffset > 0.f) {
+				zOffset -= 0.005f;
+			}
 		}
 		else {
 			yrot = PI;
@@ -142,11 +152,16 @@ void Crane::rotate()
 void Crane::contain()
 {
 	contained = true;
+	handling = !handling;
 	first = false;
 	if (x == 0 && z == 0 && yrot == 0) {
 		AGV_n_c++;
 	}if (x == -16.4f && z == 0.85f && yrot == PI) {
 		ship_n_c--;
+		yOffset += 1.5f;
+		if (ship_n_c <= 0) {
+			yOffset = 7.f;
+		}
 		containers_handled++;
 	}
 	rotated != rotated;

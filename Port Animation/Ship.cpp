@@ -24,6 +24,13 @@ void Ship::move()
 	auto& tf = ShipProbe.get_tf_root(ship);
 	if (!loading && !waiting) {
 		tf.z += speed;
+		if (tf.z < (crane.z - (speed / 2))) {
+			float y = 0.f;
+			for (auto& c : container) {
+				c.takeControl(tf.x, y, tf.z, tf.xRot, tf.yRot, tf.zRot);
+				y += 1.5f;
+			}
+		}
 		if ((tf.z - speed) < crane.z && (tf.z + speed) > crane.z) {
 			loading = true;
 			tf.z += 2 * speed;

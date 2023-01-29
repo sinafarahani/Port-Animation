@@ -8,10 +8,11 @@
 #include "Window.h"
 #include "BlurOutlineRenderGraph.h"
 #include "ChiliMath.h"
+#include "Container.h"
 
 class AGV{
 public:
-    AGV(Window& wnd, Rgph::BlurOutlineRenderGraph& rg);
+    AGV(Window& wnd, Rgph::BlurOutlineRenderGraph& rg, std::vector<Container>& v, int& ship_c, int& ship_n_c);
     
     void show_panel();
     void move();
@@ -23,9 +24,12 @@ private:
     void check_load();
 
     int capacity = 2;
-    
+    int& ship_c;
+    int container = ship_c;
+    int& ship_n_c;
     float time = 10.f;
     float speed = 0.05f;
+
     DirectX::XMFLOAT3 pos = { 1.0f,1.0f,1.0f };
     DirectX::XMFLOAT3 storage = { 100.0f,1.0f,100.0f };
     DirectX::XMFLOAT3 crane = { -0.0f,1.0f,5.0f };
@@ -34,6 +38,7 @@ private:
 
     bool full = false;
     bool waiting = false;
+    std::vector<Container>& v;
 
     Window& wnd;
     Rgph::BlurOutlineRenderGraph& rg;

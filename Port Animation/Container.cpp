@@ -16,3 +16,14 @@ void Container::render()
 {
 	container.Submit(0b1);
 }
+
+void Container::takeControl(float x, float y, float z, float xRot, float yRot, float zRot)
+{
+	auto& tf = ContainerProbe.get_tf_root(container);
+	tf.x = x;
+	tf.y = y;
+	tf.z = z;
+	tf.xRot = xRot;
+	tf.yRot = yRot;
+	tf.zRot = zRot;
+}

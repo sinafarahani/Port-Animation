@@ -12,9 +12,11 @@ public:
 	Container(const Container&) = default;
 	Container& operator=(const Container&) = default;
 	void render();
+	void takeControl(float x, float y, float z, float xRot, float yRot, float zRot);
 private:
 	Window& wnd;
 	Rgph::BlurOutlineRenderGraph& rg;
 
 	Model container{ wnd.Gfx(),"Models\\Container\\12281_Container_v2_L2.obj",1.0f / 200.0f };
+	MP ContainerProbe{ "Container" };
 };

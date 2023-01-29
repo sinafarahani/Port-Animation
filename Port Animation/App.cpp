@@ -18,8 +18,8 @@ App::App(const std::string& commandLine)
 	scriptCommander(TokenizeQuoted(commandLine)),
 	light(wnd.Gfx(), { 10.0f,5.0f,0.0f }),
 	ship(wnd, rg),
-	crane(wnd, rg, ship.n_c, vehicle.n_c, ship.loading, vehicle.loading),
-	vehicle(wnd, rg)
+	crane(wnd, rg, ship.n_c, vehicle.n_c, ship.loading, vehicle.loading, ship.container),
+	vehicle(wnd, rg, ship.container, ship.capacity, ship.n_c)
 {
 	cameras.AddCamera( std::make_unique<Camera>( wnd.Gfx(),"A",dx::XMFLOAT3{ -13.5f,6.0f,3.5f },0.0f,PI / 2.0f ) );
 	//cameras.AddCamera( light.ShareCamera() );
@@ -130,12 +130,16 @@ void App::DoFrame( float dt )
 			if (ImGui::Button("Start"))
 			{
 				Start = true;
+				wnd.DisableCursor();
+				wnd.mouse.EnableRaw();
 			}
 		}
 		else {
 			if (ImGui::Button("Stop"))
 			{
 				Start = false;
+				wnd.EnableCursor();
+				wnd.mouse.DisableRaw();
 			}
 		}
 	}
